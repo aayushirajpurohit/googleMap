@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">aayushiPractice</string>
+     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCm6K4I4lwdlEARkJx2TNujo3kt7Ci6emU</string>
+</resources>
