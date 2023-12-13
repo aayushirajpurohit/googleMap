@@ -101,6 +101,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    buildToolsVersion '7.3.1'
 }
 
 dependencies {
