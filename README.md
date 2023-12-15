@@ -1,79 +1,136 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## PLACE Mortgage Calculator
 
-# Getting Started
+I'll give you an introduction on how to build this project and distribute using CodePush. Use videos below to accompany this written guide.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### iOS
 
-## Step 1: Start the Metro Server
+[1. Cloning and building for the ios project](https://www.loom.com/share/76c4c5542e244c768044ffb67c616b56)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+[2. Distributing](https://www.loom.com/share/f4e7f67b8ead4669a17f484b83aa87b5)
 
-To start Metro, run the following command from the _root_ of your React Native project:
+[3. Push updates using CodePush(GitLab)](https://www.loom.com/share/d0254fb91b584d869664378f969e802e)
 
-```bash
-# using npm
-npm start
+[4. Push updates using CodePush(Manual)](https://www.loom.com/share/1f818cab04c84368b959b441b5a4ff67)
 
-# OR using Yarn
-yarn start
+### Android
+
+Coming soon...
+
+### Running Locally
+
+We will guide you through the following steps to run iOS/Android apps locally.
+
+#### Requirements
+
+- Node v16.0.0
+- Android SDK
+- Yarn (npm i -g yarn)
+- Cocoapods
+
+#### Quick start
+
+Get up and running with our apps: 
+
+**1. Clone the repo**
+
+```shell
+$ git clone git@gitlab.rmcloud.com:bkco/bkmortgage-react-native.git
 ```
 
-## Step 2: Start your Application
+**2. Switch Branch**
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Switch to the current workspace branch
 
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```shell
+$ cd bkmortgage-react-native
+$ git switch android-republish-place
 ```
 
-### For iOS
 
-```bash
-# using npm
-npm run ios
+**3. Install dependencies**
 
-# OR using Yarn
-yarn ios
+```shell
+$ yarn install
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+```shell
+$ cd ios && pod install
+```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+**4. Running in emulator**
 
-## Step 3: Modifying your App
+iOS
 
-Now that you have successfully run the app, let's modify it.
+```shell
+$ react-native run-ios
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+Android
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+```shell
+$ react-native run-android
+```
 
-## Congratulations! :tada:
+#### Troubleshooting
 
-You've successfully run and modified your React Native App. :partying_face:
+Here are some commands to run if builds are crashing.
 
-### Now what?
+**iOS**
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+in Xcode
+```
+Menu Bar → Product → Clean
+```
 
-# Troubleshooting
+**Android**
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```shell
+$ cd android && ./gradlew clean
+```
 
-# Learn More
+#### Congratulations! You now have both iOS and Android apps running!
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+### Build and Distribute
+
+We integrated AppCenter to our project so you can build and distribute both iOS and Android apps using it.
+
+**iOS**
+
+You can build iOS project [here](https://appcenter.ms/orgs/BKCO-Mortgage/apps/Place/build/branches/android-republish-place)
+
+**Android**
+
+You can build Android project [here](https://appcenter.ms/orgs/BKCO-Mortgage/apps/Place-1/build/branches/android-republish-place)
+
+![image](/uploads/ec012aab0c42774c7cb5d103431169f7/image.png)
+
+After building projects successfully, you can see the Distribute button on the built page.
+
+![image](/uploads/51815d7c7a32872f37be8e8fd3f0dc80/image.png)
+
+You can distribute apps using that button. It should be easy for you.
+
+### Update apps using CodePush (Gitlab ci)
+
+You can push your codes with a tag and then the Gitlab runner will update your apps automatically.
+
+### Update apps using CodePush (Manual)
+
+We integrated react-native-code-push to the project. So you can update apps without re-pushing them to stores.  
+Make sure you have read [Getting Started](https://docs.microsoft.com/en-us/appcenter/cli/) and log in to AppCenter  
+
+**iOS**
+
+```shell
+$ cd appCenter && sh update-ios.sh
+```
+
+**Android**
+
+```shell
+$ cd appCenter && sh update-android.sh
+```
+
